@@ -89,7 +89,7 @@ app.delete('/api/persons/:id', (request, response) => {
 app.put('/api/persons/:id', (request, response) => {
     const id = Number(request.params.id)
     const person = persons.find(person => person.id === id)
-    person.id = id
+    person.number = request.params.number
     persons = persons.map(p => p.id !== id? p : person) 
 
     response.json(person)
