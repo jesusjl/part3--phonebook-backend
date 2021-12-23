@@ -86,6 +86,15 @@ app.delete('/api/persons/:id', (request, response) => {
     response.status(204).end()
 })
 
+app.update('/api/persons/:id', (request, response) => {
+    const id = Number(request.params.id)
+    const person = persons.find(person => person.id === id)
+    persons = persons.map(p => p.id !== id? p : person) 
+
+    response.json(person)
+})
+
+
 const getRandomIntegerId = (max) => {
     return Math.floor(Math.random() * max);
 }
